@@ -30,7 +30,8 @@ elif ask_input.upper() == 'D':
     en_message = input('enter the encrypted message: ') #copy the encrypted key and paste it here(copy without the b' ')
     byte_en_message = bytes(en_message, 'utf-8')  #converting the message to byte array
     decrypt_message = f.decrypt(byte_en_message)
-    print(decrypt_message)
+    original_message = decrypt_message.decode()  #converting byte array to string
+    print(original_message)
 
 else :
     print("please enter a valid character.")
