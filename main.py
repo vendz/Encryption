@@ -19,10 +19,18 @@ kdf = PBKDF2HMAC (
 key = base64.urlsafe_b64encode(kdf.derive(password))  #can only use KDF(key derivation function) once
 f = Fernet(key)
 
-message = input('enter a message you want to encrypt: ')
-byte_message = bytes(message, 'utf-8')     # converting user input to type
-encrypted_message = f.encrypt(byte_message)  
-print(encrypted_message)
+ask_input = input('do you want to encrypt or decrypt (E or D): ')
+if ask_input.upper() == 'E':
+    message = input('enter a message you want to encrypt: ')
+    byte_message = bytes(message, 'utf-8')     #converting user input to byte array
+    encrypted_message = f.encrypt(byte_message)  
+    print(encrypted_message)
 
-decrypt_message = f.decrypt(encrypted_message)
-print(decrypt_message)
+elif ask_input.upper() == 'D':
+    en_message = input('enter the encrypted message: ') #copy the encrypted key and paste it here(copy without the b' ')
+    byte_en_message = bytes(en_message, 'utf-8')  #converting the message to byte array
+    decrypt_message = f.decrypt(byte_en_message)
+    print(decrypt_message)
+
+else :
+    print("please enter a valid character.")
