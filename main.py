@@ -21,7 +21,7 @@ f = Fernet(key)
 
 message = input('enter a message you want to encrypt: ')
 byte_message = bytes(message, 'utf-8')     # converting user input to type
-encrypted_message = f.encrypt(byte_message)
+encrypted_message = f.encrypt(byte_message)  
 print(encrypted_message)
 
 decrypt_message = f.decrypt(encrypted_message)
