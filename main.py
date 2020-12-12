@@ -20,7 +20,7 @@ key = base64.urlsafe_b64encode(kdf.derive(password))  #can only use KDF(key deri
 f = Fernet(key)
 
 message = input('enter a message you want to encrypt: ')
-byte_message = bytes(message, 'utf-8')
+byte_message = bytes(message, 'utf-8')     # converting user input to type bytes
 encrypted_message = f.encrypt(byte_message)
 print(encrypted_message)
 
