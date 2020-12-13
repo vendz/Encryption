@@ -19,6 +19,13 @@ kdf = PBKDF2HMAC (
 key = base64.urlsafe_b64encode(kdf.derive(password))  #can only use KDF(key derivation function) once
 f = Fernet(key)
 
+print("""\n      :::::::: ::::::::: :::   ::::::::::::::::::::::: 
+    :+:    :+::+:    :+::+:   :+::+:    :+:   :+:      
+   +:+       +:+    +:+ +:+ +:+ +:+    +:+   +:+       
+  +#+       +#++:++#:   +#++:  +#++:++#+    +#+        
+ +#+       +#+    +#+   +#+   +#+          +#+         
+#+#    #+##+#    #+#   #+#   #+#          #+#          
+######## ###    ###   ###   ###          ###                   \n\n\n""")
 ef_df = input("do you want to work with files or text (F or T): ")   #asking client if he/she wan't to work with file or message 
 if ef_df.upper() == 'F':
     ask_input_f = input('do you want to encrypt or decrypt the file (E or D): ')
