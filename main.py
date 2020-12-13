@@ -24,18 +24,24 @@ if ef_df.upper() == 'F':
     ask_input_f = input('do you want to encrypt or decrypt the file (E or D): ')
     if ask_input_f.upper() == 'E':
         filename = input("copy the file you want to encrypt to this folder and enter it's name(also use the extension): ")
+        split_filename = filename.split(".", 1)   #we split the name into two so that we can have the extension
+        substring_filename = split_filename[0]    #we store the first part of splited string
         with open(filename, 'rb') as s:    #we will open a file with read byte
             e_file = s.read()
         encrypted_file = f.encrypt(e_file)
-        with open(filename + 'encrypted', 'wb') as ef:    #we will create new file with encrypted data in it with write byte
+        user_filename_en = input("what would you like to name the encrypted file (with extension): ")    #we ask the user to name the encrypted file
+        with open(user_filename_en, 'wb') as ef:    #we will create new file with encrypted data in it with write byte
             ef.write(encrypted_file)
 
     elif ask_input_f.upper() == 'D':
-        d_filename = input("copy the file you want to encrypt to this folder and enter it's name (also use the extension): ")
+        d_filename = input("copy the file you want to encrypt to this folder and enter it's name (with extension): ")
+        split_d_filename = d_filename.split('.', 1)
+        substring_d_filename = split_d_filename[0]
         with open(d_filename, 'rb') as df:      #we will open a file with read byte
             encrypted_data = df.read()
         decrypted_file = f.decrypt(encrypted_data)
-        with open(d_filename + 'decrypted', 'wb') as ddf:    #we will create new file with decrypted data in it with write byte
+        user_filename_de = input("what would you like to name the decrypted file (with extension): ")
+        with open(user_filename_de, 'wb') as ddf:    #we will create new file with decrypted data in it with write byte
             ddf.write(decrypted_file)
 
     else :
