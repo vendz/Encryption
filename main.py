@@ -23,20 +23,20 @@ ef_df = input("do you want to work with files or text (F or T): ")   #asking cli
 if ef_df.upper() == 'F':
     ask_input_f = input('do you want to encrypt or decrypt the file (E or D): ')
     if ask_input_f.upper() == 'E':
-        filename = input("copy the file you want to encrypt to this folder and enter it's name: ")
+        filename = input("copy the file you want to encrypt to this folder and enter it's name(also use the extension): ")
         with open(filename, 'rb') as s:    #we will open a file with read byte
             e_file = s.read()
         encrypted_file = f.encrypt(e_file)
-        with open('your encrypted file.pages', 'wb') as es:    #we will create new file with encrypted data in it with write byte
-            es.write(encrypted_file)
+        with open(filename + 'encrypted', 'wb') as ef:    #we will create new file with encrypted data in it with write byte
+            ef.write(encrypted_file)
 
     elif ask_input_f.upper() == 'D':
-        d_filename = input("copy the file you want to encrypt to this folder and enter it's name: ")
-        with open(d_filename, 'rb') as df:
+        d_filename = input("copy the file you want to encrypt to this folder and enter it's name (also use the extension): ")
+        with open(d_filename, 'rb') as df:      #we will open a file with read byte
             encrypted_data = df.read()
         decrypted_file = f.decrypt(encrypted_data)
-        with open('your decrypted file.pages', 'wb'):
-            df.write()
+        with open(d_filename + 'decrypted', 'wb') as ddf:    #we will create new file with decrypted data in it with write byte
+            ddf.write(decrypted_file)
 
     else :
         print("please enter a valid character.")
@@ -61,4 +61,4 @@ elif ef_df.upper() == 'T':
         print("please enter a valid character.")
 
 else :
-        print("please enter a valid character.")
+    print("please enter a valid character.")
