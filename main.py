@@ -71,7 +71,7 @@ elif ef_df.upper() == 'T':
         byte_en_message = bytes(en_message, 'utf-8')  #converting the message to byte array
         decrypt_message = f.decrypt(byte_en_message)
         original_message = decrypt_message.decode()  #converting byte array to string
-        print("----------------------------------------------------------Decrypted Message--------------------------------------------------------------------------------------")
+        print("----------------------------------------------------------Decrypted Message-------------------------------------------------------------------------")
         print(original_message + '\n')
         print('----------------------------------------------------------------------------------------------------------------------------------------------------')
 
