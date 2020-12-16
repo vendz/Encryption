@@ -5,6 +5,8 @@ from cryptography.hazmat.backends import default_backend
 from cryptography.hazmat.primitives import hashes
 from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
 
+print('\nthe password that you will Enter below will generate a unique key to Encrypt or Decrypt your Data')
+print('Also use the same password to Encrypt and Decrypt your data')
 password_provided = input("enter your password: ")  #this is input in form of a string
 password = password_provided.encode()  # convert to typr bytes
 
@@ -43,26 +45,38 @@ while True:
                     continue
                 else:
                     if ask_input_f.upper() == 'E':
-                        filename = input("copy the file you want to encrypt to this folder and enter it's name(also use the extension): ")
-                        split_filename = filename.split(".", 1)   #we split the name into two so that we can have the extension
-                        substring_filename = split_filename[0]    #we store the first part of splited string
-                        with open(filename, 'rb') as s:    #we will open a file with read byte
-                            e_file = s.read()
-                        encrypted_file = f.encrypt(e_file)
-                        user_filename_en = input("what would you like to name the encrypted file (with extension): ")    #we ask the user to name the encrypted file
-                        with open(user_filename_en, 'wb') as ef:    #we will create new file with encrypted data in it with write byte
-                            ef.write(encrypted_file)
+                        while True:
+                            try:
+                                filename = input("copy the file path with it's name and extension and paste it here to Encrypt: ")
+                                with open(filename, 'rb') as ef:    #we will open a file with read byte
+                                    e_file = ef.read()
+                            except FileNotFoundError:
+                                print("Pleaase enter a valid file name or enter full file path!\n")
+                                continue
+                            else:
+                                encrypted_file = f.encrypt(e_file)
+                                user_filename_en = input("what would you like to name the encrypted file (with extension): ")    #we ask the user to name the encrypted file
+                                with open(user_filename_en, 'wb') as ef:    #we will create new file with encrypted data in it with write byte
+                                    ef.write(encrypted_file)
+                                break
 
                     elif ask_input_f.upper() == 'D':
-                        d_filename = input("copy the file you want to decrypt to this folder and enter it's name (with extension): ")
-                        split_d_filename = d_filename.split('.', 1)
-                        substring_d_filename = split_d_filename[0]
-                        with open(d_filename, 'rb') as df:      #we will open a file with read byte
-                            encrypted_data = df.read()
-                        decrypted_file = f.decrypt(encrypted_data)
-                        user_filename_de = input("what would you like to name the decrypted file (with extension): ")
-                        with open(user_filename_de, 'wb') as ddf:    #we will create new file with decrypted data in it with write byte
-                            ddf.write(decrypted_file)
+                        while True:
+                            try:
+                                d_filename = input("copy the file path with it's name and extension and paste it here to Decrypt: ")
+                                split_d_filename = d_filename.split('.', 1)
+                                substring_d_filename = split_d_filename[1]
+                                with open(d_filename, 'rb') as df:      #we will open a file with read byte
+                                    encrypted_data = df.read()
+                            except FileNotFoundError:
+                                print("Please enter a valid name or enter full file path!\n")
+                                continue
+                            else:
+                                decrypted_file = f.decrypt(encrypted_data)
+                                user_filename_de = input("what would you like to name the decrypted file (with extension): ")
+                                with open(user_filename_de, 'wb') as ddf:    #we will create new file with decrypted data in it with write byte
+                                    ddf.write(decrypted_file)
+                                break
                     break
 
         elif ef_df.upper() == 'T':
