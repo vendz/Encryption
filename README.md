@@ -10,7 +10,7 @@
 
 ---
 
-###**Known Bugs**:
+### **Known Bugs**:
 - **it cannot encrypt files with 'sapce' in naming, present in other directories on the PC**
 
 ---
