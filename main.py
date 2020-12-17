@@ -48,7 +48,8 @@ while True:
                         while True:
                             try:
                                 filename = input("copy the file path with it's name and extension and paste it here to Encrypt: ")
-                                with open(filename, 'rb') as ef:    #we will open a file with read byte
+                                filename_replace = filename.replace('\\ ', " ")
+                                with open(filename_replace, 'rb') as ef:    #we will open a file with read byte
                                     e_file = ef.read()
                             except FileNotFoundError:
                                 print("Pleaase enter a valid file name or enter full file path!\n")
@@ -64,9 +65,8 @@ while True:
                         while True:
                             try:
                                 d_filename = input("copy the file path with it's name and extension and paste it here to Decrypt: ")
-                                split_d_filename = d_filename.split('.', 1)
-                                substring_d_filename = split_d_filename[1]
-                                with open(d_filename, 'rb') as df:      #we will open a file with read byte
+                                d_filename_replace = d_filename.replace('\\ ', ' ')
+                                with open(d_filename_replace, 'rb') as df:      #we will open a file with read byte
                                     encrypted_data = df.read()
                             except FileNotFoundError:
                                 print("Please enter a valid name or enter full file path!\n")
