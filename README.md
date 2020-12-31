@@ -61,4 +61,4 @@ what would you like to name the encrypted file (with extension): /Users/vendz/De
 
 
 
-### © [Vandit](https://github.com/vendz)
+## © [Vandit](https://github.com/vendz)
