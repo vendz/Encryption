@@ -8,7 +8,7 @@ from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
 print('\nthe password that you will Enter below will generate a unique key to Encrypt or Decrypt your Data')
 print('Also use the same password to Encrypt and Decrypt your data')
 password_provided = input("enter your password: ")  #this is input in form of a string
-password = password_provided.encode()  # convert to typr bytes
+password = password_provided.encode()  # convert to type bytes
 
 salt = b'w\x8a\x0b\x93f}\xd7u\xecD/3\xda\x1e\x05\xbd'
 kdf = PBKDF2HMAC (
