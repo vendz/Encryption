@@ -58,7 +58,7 @@ what would you like to name the encrypted file (with extension): /Users/vendz/De
 ###### **NOTE:** If you don't enter the file path while naming new file, it will get saved inside the folder where this program is saved
 ---
 
-
-
+#### I have used this same program and converted it to GUI using `tkinter`. you can check it out `encryption_gui.py`
+---
 
 ### © [Vandit](https://github.com/vendz)
